@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="product_pricelist_item_form_view_inherit_uom" model="ir.ui.view">
+        <field name="name">product.pricelist.item.form.inherit.uom</field>
+        <field name="model">product.pricelist.item</field>
+        <field name="inherit_id" ref="product.product_pricelist_item_form_view"/>
+        <field name="arch" type="xml">
+            <xpath expr="//group[1]" position="inside">
+                <separator string="Multi UoM Details"/>
+                <label for="uom_id" string="Unit of Measure" class="fw-bold"/>
+                <field name="uom_id"/>
+                <label for="uom_barcode" string="UoM Barcode" class="fw-bold"/>
+                <field name="uom_barcode"/>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="product_pricelist_item_tree_view_inherit_uom" model="ir.ui.view">
+        <field name="name">product.pricelist.item.tree.inherit.uom</field>
+        <field name="model">product.pricelist.item</field>
+        <field name="inherit_id" ref="product.product_pricelist_item_tree_view"/>
+        <field name="arch" type="xml">
+            <xpath expr="//list/field[1]" position="before">
+                <field name="uom_id" optional="show"/>
+                <field name="uom_barcode" optional="show"/>
+            </xpath>
+        </field>
+    </record>
+</odoo>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="product_template_form_view_uom_prices" model="ir.ui.view">
+        <field name="name">product.template.form.uom.prices</field>
+        <field name="model">product.template</field>
+        <field name="inherit_id" ref="product.product_template_form_view"/>
+        <field name="priority" eval="50"/>
+        <field name="arch" type="xml">
+            <field name="uom_id" position="after">
+                <group string="Multi UoM Settings" col="2">
+                    <field name="allow_multi_uom" string="Enable Multi UoM Pricing"/>
+                    <field name="strict_uom_tracking"
+                           string="Allow Strict UoM Tracking on Sales Lines"
+                           invisible="not allow_multi_uom"/>
+                </group>
+            </field>
+
+            <xpath expr="//field[@name='pricelist_rule_ids']/list" position="inside">
+                <field name="uom_id" optional="show"/>
+                <field name="uom_barcode" optional="show"/>
+            </xpath>
+        </field>
+    </record>
+</odoo>
